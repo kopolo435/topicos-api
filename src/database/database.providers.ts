@@ -1,4 +1,5 @@
 import { SQLSERVER } from "@/constants";
+import { Task } from "@/task/task.entity";
 import { DataSource } from "typeorm";
 
 export const databaseProviders = [
@@ -12,7 +13,7 @@ export const databaseProviders = [
             password: process.env.DB_PASS || "",
             database: process.env.DB_NAME || "testdb",
             entities: [
-                import.meta.dirname + "/../**/*.entity.ts"
+                Task
             ]
         }).initialize()
     }

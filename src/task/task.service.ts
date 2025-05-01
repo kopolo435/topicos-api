@@ -2,7 +2,7 @@ import { TASK_REPOSITORY } from "@/constants";
 import { Inject, Injectable } from "@nestjs/common";
 import type { Repository } from "typeorm";
 import { Task } from "./task.entity";
-import type { UpdateTaskDto } from "./dto/UpdateTask.dto";
+import type { UpdateTaskDto } from "./dto/update-task.dto";
 
 @Injectable()
 export class TaskService {
@@ -28,6 +28,7 @@ export class TaskService {
         task.dueBy = new Date(dueBy);
         task.createdAt = new Date();
         task.important = important;
+        task.completed = false;
 
         return this.repository.save(task);
     }

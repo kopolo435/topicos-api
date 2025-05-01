@@ -1,13 +1,11 @@
 import { Body, Controller, Delete, Get, NotFoundException, Param, Post, Put } from "@nestjs/common";
 import { TaskService } from "./task.service";
-import type { CreateTaskDto } from "./dto/CreateTask.dto";
-import type { UpdateTaskDto } from "./dto/UpdateTask.dto";
+import type { CreateTaskDto } from "./dto/create-task.dto";
+import type { UpdateTaskDto } from "./dto/update-task.dto";
 
 @Controller("task")
 export class TaskController {
-    constructor(private readonly taskService: TaskService) {
-        console.log(taskService)
-    }
+    constructor(private readonly taskService: TaskService) { }
 
     @Get()
     public getAllTasks() {

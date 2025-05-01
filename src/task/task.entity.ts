@@ -17,9 +17,9 @@ export class Task {
     @Column({ type: "timestamp" })
     createdAt!: Date;
 
-    @Column({ type: "bit" }) // { type: "bullshit" }
+    @Column({ type: "bit" })
     important!: boolean;
 
-    @Column({ type: "bit" }) // { type: "God's Plan" }
+    @Column({ type: "bit" })
     completed!: boolean;
 }
