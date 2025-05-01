@@ -1,0 +1,38 @@
+{
+    "name": "server",
+    "version": "1.0.0",
+    "description": "",
+    "scripts": {
+        "test": "jest",
+        "dev": "nodemon --exec tsx src/main.ts"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "type": "module",
+    "module": "src/main.ts",
+    "dependencies": {
+        "@nestjs/common": "^11.1.0",
+        "@nestjs/config": "^4.0.2",
+        "@nestjs/core": "^11.1.0",
+        "@nestjs/platform-express": "^11.1.0",
+        "@nestjs/typeorm": "^11.0.0",
+        "class-transformer": "^0.5.1",
+        "class-validator": "^0.14.1",
+        "mssql": "^11.0.1",
+        "reflect-metadata": "^0.2.2",
+        "rxjs": "^7.8.2",
+        "typeorm": "^0.3.22"
+    },
+    "devDependencies": {
+        "@nestjs/testing": "^11.1.0",
+        "@types/jest": "^29.5.14",
+        "@types/node": "^22.15.3",
+        "jest": "^29.7.0",
+        "nodemon": "^3.1.10",
+        "ts-jest": "^29.3.2",
+        "tsconfig-paths": "^4.2.0",
+        "tsx": "^4.19.3",
+        "typescript": "^5.8.3"
+    }
+}
