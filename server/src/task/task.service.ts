@@ -6,12 +6,7 @@ import type { UpdateTaskDto } from "./dto/update-task.dto";
 
 @Injectable()
 export class TaskService {
-    constructor(
-        @Inject(TASK_REPOSITORY) 
-        private repository: Repository<Task>
-    ) {
-        console.log("someone called task service");
-    }
+    constructor(@Inject(TASK_REPOSITORY) private repository: Repository<Task>) { }
 
     async getAllTasks(): Promise<Array<Task>> {
         return this.repository.find();
