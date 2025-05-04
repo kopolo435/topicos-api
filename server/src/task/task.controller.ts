@@ -15,11 +15,9 @@ export class TaskController {
     @Get(":id") 
     public async getTaskById(@Param("id") taskId: string) {
         const task = await this.taskService.getTaskById(taskId);
-
         if(!task) {
             throw new NotFoundException("No task with id of '" + taskId + "' was found.");
         }
-
         return task;
     }
 
@@ -30,6 +28,8 @@ export class TaskController {
 
     @Put(":id") 
     public updateTask(@Param("id")  taskId: string, @Body() task: UpdateTaskDto) {
+        console.log("Entered PUT /api/task/:id")
+        console.log(task)
         return this.taskService.updateTask(taskId, task);
     }
 

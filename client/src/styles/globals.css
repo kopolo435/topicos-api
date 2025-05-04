@@ -1,0 +1,23 @@
+@import 'tailwindcss';
+
+@plugin 'daisyui' {
+    themes: light --default;
+}
+
+html,
+body {
+    color-scheme: light;
+    background-color: var(--color-gray-200);
+    color: black;
+    min-height: 100vh;
+}
+
+input:read-only,
+textarea:read-only {
+    user-select: none;
+    pointer-events: none;
+    outline: none;
+    background-color: inherit;
+    border: none;
+    resize: none;
+}
