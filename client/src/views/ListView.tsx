@@ -12,7 +12,7 @@ export default function ListView(): React.JSX.Element {
     const [data, setData] = useState<Array<ITask>>([]);
     useEffect(() => {
         const fetchAllTasks = async () => {
-            const url = buildUrl("http://localhost:3000", "api/task");
+            const url = buildUrl(import.meta.env.VITE_API_URL!, "api/task");
             const response = await fetch(url, {
                 method: "GET",
             });
