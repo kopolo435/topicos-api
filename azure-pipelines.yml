@@ -8,7 +8,7 @@ variables:
   IMAGE_TAG: latest      
   ACR_NAME: topicos2testregistry.azurecr.io
   ACR_CONNECTION_NAME: TopicosRegistry
-  CONTAINER_GROUP_NAME: test-api-running
+  CONTAINER_GROUP_NAME: test-api-runningv3
   RESOURCE_GROUP: students_api
   DNS_NAME_LABEL: farmacia-api
   AZURE_RESOURCE_CONNECTION: azure_resource_connection
@@ -56,7 +56,7 @@ steps:
         --cpu 1 `
         --memory 1.5 `
         --dns-name-label $(DNS_NAME_LABEL) `
-        --ports 80 3000
+        --ports 80
 
 
 
