@@ -10,7 +10,7 @@ variables:
   ACR_CONNECTION_NAME: TopicosRegistry
   CONTAINER_GROUP_NAME: test-api-runningv3
   RESOURCE_GROUP: students_api
-  DNS_NAME_LABEL: farmacia-api
+  DNS_NAME_LABEL: farmacia-apiv2
   AZURE_RESOURCE_CONNECTION: azure_resource_connection
 
 steps:
