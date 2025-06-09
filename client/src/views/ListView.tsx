@@ -33,7 +33,7 @@ export default function ListView(): React.JSX.Element {
                 <Alert daisyColor={alert.daisyColor} message={alert.message} />
             }
             <div className="w-full max-w-5xl mx-auto p-4">
-                <h1 className="text-3xl font-semibold my-4">Simple To-do App Adios World</h1>
+                <h1 className="text-3xl font-semibold my-4">Simple To-do App </h1>
                 <div className="overflow-x-auto rounded-box shadow-md bg-base-100 mb-6">
                     <table className="table">
                         <thead>
