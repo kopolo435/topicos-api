@@ -1,0 +1,62 @@
+trigger:
+- main
+
+pool: mini-white-pool
+
+variables:
+  IMAGE_NAME: ui-topicos
+  IMAGE_TAG: latest      
+  ACR_NAME: topicos2testregistry.azurecr.io
+  ACR_CONNECTION_NAME: TopicosRegistry
+  CONTAINER_GROUP_NAME: test-api-running
+  RESOURCE_GROUP: students_api
+  DNS_NAME_LABEL: farmacia-api
+  AZURE_RESOURCE_CONNECTION: azure_resource_connection
+
+steps:
+- task: Docker@2
+  displayName: 'Build and Push Docker Image'
+  inputs:
+    command: buildAndPush
+    Dockerfile: 'client/Dockerfile'
+    repository: $(ACR_NAME)/$(IMAGE_NAME)
+    tags: $(IMAGE_TAG)
+    containerRegistry: 'TopicosRegistry'
+
+- task: AzureCLI@2
+  displayName: 'Deploy to Azure Container Instances'
+  inputs:
+    azureSubscription: $(AZURE_RESOURCE_CONNECTION)
+    scriptType: ps
+    scriptLocation: inlineScript
+    inlineScript: |
+      # Obtener nombre corto del ACR (antes del primer punto)
+      $acrName = "$(ACR_NAME)".Split('.')[0]
+
+      # Obtener usuario y contraseña del ACR (devuelve dos líneas: username y password)
+      $acrCreds = az acr credential show --name $acrName --query "[username, passwords[0].value]" -o tsv
+      $acrUsername, $acrPassword = $acrCreds -split "`n"
+
+      # Eliminar el contenedor si existe
+      az container delete `
+        --name $(CONTAINER_GROUP_NAME) `
+        --resource-group $(RESOURCE_GROUP) `
+        --yes
+
+      # Crear el contenedor con credenciales para el registro privado
+      az container create `
+        --resource-group $(RESOURCE_GROUP) `
+        --name $(CONTAINER_GROUP_NAME) `
+        --image $(ACR_NAME)/$(IMAGE_NAME):$(IMAGE_TAG) `
+        --registry-login-server $(ACR_NAME) `
+        --registry-username $acrUsername `
+        --registry-password $acrPassword `
+        --os-type Linux `
+        --restart-policy OnFailure `
+        --cpu 1 `
+        --memory 1.5 `
+        --dns-name-label $(DNS_NAME_LABEL) `
+        --ports 80 3000
+
+
+
