@@ -43,6 +43,8 @@ steps:
         --resource-group $(RESOURCE_GROUP) `
         --yes
 
+      Start-Sleep -Seconds 30
+      
       # Crear el contenedor con credenciales para el registro privado
       az container create `
         --resource-group $(RESOURCE_GROUP) `
