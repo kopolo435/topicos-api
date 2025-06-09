@@ -5,7 +5,7 @@ pool: mini-white-pool
 
 variables:
   IMAGE_NAME: ui-topicos
-  IMAGE_TAG: latest      
+  IMAGE_TAG: testv1      
   ACR_NAME: topicos2testregistry.azurecr.io
   ACR_CONNECTION_NAME: TopicosRegistry
   CONTAINER_GROUP_NAME: test-api-runningv3
